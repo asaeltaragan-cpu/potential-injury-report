@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Potential Injury Report Form · 414D.00.05 Rev F</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+:root{
+  --bg:#f4f3f6;--surface:#ffffff;--surface-2:#ece7f0;--surface-3:#f8f6fa;
+  --ink:#211b2c;--ink-soft:#635c70;--ink-faint:#948da0;
+  --line:#ddd7e2;--line-strong:#c3bbcf;
+  --accent:#5b3a73;--accent-strong:#432958;--accent-soft:#ece3f2;--accent-ink:#ffffff;
+  --focus:#7a4f99;--danger:#a23a28;
+  --font-display:"Archivo","Rubik","Arial Narrow",sans-serif;
+  --font-body:"IBM Plex Sans","Rubik",-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  --radius:14px;--shadow:0 1px 2px rgba(33,27,44,.06),0 6px 18px rgba(33,27,44,.05);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17141c;--surface:#201c29;--surface-2:#2a2434;--surface-3:#241f2d;
+  --ink:#ece8f0;--ink-soft:#a79fb2;--ink-faint:#776f83;--line:#362f42;--line-strong:#453b53;
+  --accent:#b48ed1;--accent-strong:#cba8e3;--accent-soft:#2e2438;--accent-ink:#1b1422;
+  --focus:#b48ed1;--danger:#e6947e;color-scheme:dark;
+}}
+[data-theme="dark"]{
+  --bg:#17141c;--surface:#201c29;--surface-2:#2a2434;--surface-3:#241f2d;
+  --ink:#ece8f0;--ink-soft:#a79fb2;--ink-faint:#776f83;--line:#362f42;--line-strong:#453b53;
+  --accent:#b48ed1;--accent-strong:#cba8e3;--accent-soft:#2e2438;--accent-ink:#1b1422;
+  --focus:#b48ed1;--danger:#e6947e;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.layout{display:grid;grid-template-columns:240px minmax(0,860px);gap:32px;max-width:1180px;margin:0 auto;padding:32px 24px 120px}
+@media (max-width:980px){.layout{grid-template-columns:1fr;padding:16px 12px 120px}.side-nav{display:none}}
+.side-nav{position:sticky;top:24px;align-self:start}
+.side-nav .docno{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);margin:0 0 12px;padding-inline-start:14px}
+.side-nav a{display:block;padding:7px 14px;border-inline-start:3px solid transparent;color:var(--ink-soft);text-decoration:none;font-size:14px}
+.side-nav a:hover{color:var(--accent);border-inline-start-color:var(--line-strong)}
+.side-nav a b{font-family:var(--font-display);font-weight:700;color:var(--accent);display:inline-block;min-width:22px}
+.content{min-width:0}
+.doc-header>div:first-child{min-width:0;flex:1 1 240px}
+.doc-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.brand{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:.02em;color:var(--accent-strong)}
+.brand small{display:block;font-family:var(--font-body);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:2px}
+.doc-header h1{font-family:var(--font-display);font-weight:800;font-size:28px;line-height:1.15;margin:8px 0 4px}
+.doc-header .rev{font-family:var(--font-mono);font-size:13px;color:var(--ink-soft)}
+.ae-numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:14px;max-width:520px}
+.lang-toggle{flex-shrink:0;align-self:flex-start}
+.instructions{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;margin-bottom:16px;box-shadow:var(--shadow)}
+.instructions h2{font-family:var(--font-display);font-size:16px;margin:0 0 8px}
+.instructions ol{margin:0;padding-inline-start:22px;color:var(--ink-soft);font-size:14px}
+.instructions li{margin:4px 0}
+.banner-slot{margin-bottom:16px}
+.banner{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);font-size:14px}
+.banner.info{border-color:var(--accent);background:var(--accent-soft)}
+.banner.warn{border-color:var(--danger);color:var(--danger);background:var(--surface)}
+.banner.success{border-color:var(--accent);background:var(--surface)}
+.banner .close{margin-inline-start:auto;background:none;border:0;font-size:20px;line-height:1;cursor:pointer;color:inherit;padding:0 4px}
+.section-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden}
+.section-head{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,var(--accent-soft),var(--surface))}
+.section-letter{font-family:var(--font-display);font-weight:800;font-size:18px;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--accent);color:var(--accent-ink);flex-shrink:0}
+.section-head h2{font-family:var(--font-display);font-size:18px;margin:0;line-height:1.2}
+.section-head .by{font-size:12px;color:var(--ink-soft);margin-top:2px}
+.section-body{padding:16px 20px 20px}
+.group{margin-top:18px}
+.group:first-child{margin-top:0}
+.group h3{font-family:var(--font-display);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;padding-bottom:6px;border-bottom:1px dashed var(--line)}
+.group h4{font-size:13px;font-weight:600;color:var(--ink-soft);margin:12px 0 8px}
+.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px 16px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field.wide{grid-column:1 / -1}
+.field label,.field .lbl{font-size:13px;font-weight:500;color:var(--ink-soft)}
+.field input[type=text],.field input[type=date],.field textarea{width:100%;font:inherit;font-size:14px;color:var(--ink);background:var(--surface-3);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:38px}
+.field textarea{min-height:88px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--focus)}
+.unit-wrap{position:relative}
+.unit-wrap input{padding-inline-end:44px}
+.unit-wrap .unit{position:absolute;inset-inline-end:10px;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:12px;color:var(--ink-faint)}
+.choices{display:flex;flex-wrap:wrap;gap:6px 8px}
+.choices label{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink);background:var(--surface-3);border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer}
+.choices input{accent-color:var(--accent);margin:0}
+.choices input:focus-visible{outline:2px solid var(--focus)}
+.other-text{margin-top:6px}
+.block{border:1px solid var(--line);border-radius:10px;margin-top:14px;background:var(--surface-3)}
+.block-head{display:flex;align-items:center;gap:12px;padding:10px 14px;flex-wrap:wrap}
+.block-head .code{font-family:var(--font-mono);font-weight:500;font-size:13px;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 7px}
+.block-head .bt{font-family:var(--font-display);font-weight:700;font-size:14px;flex:1;min-width:120px}
+.block-body{padding:0 14px 14px}
+.sig{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+details.section-card summary{list-style:none;cursor:pointer}
+details.section-card summary::-webkit-details-marker{display:none}
+.ref-intro{color:var(--ink-soft);font-size:14px;margin:0 0 14px}
+.fig{border:1px dashed var(--line-strong);border-radius:10px;padding:28px 16px;text-align:center;color:var(--ink-faint);font-size:13px;margin:10px 0;background:var(--surface-3)}
+.fig b{display:block;color:var(--ink-soft);font-family:var(--font-display);margin-bottom:4px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:10px}
+table.f3{border-collapse:collapse;width:100%;min-width:720px;font-size:13px}
+table.f3 th,table.f3 td{text-align:start;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.f3 th{background:var(--surface-2);font-family:var(--font-display);font-size:12px;letter-spacing:.04em}
+table.f3 td.market{font-weight:600;background:var(--surface-3)}
+table.f3 td.mono{font-family:var(--font-mono);white-space:nowrap}
+.footnote{font-size:12px;color:var(--ink-soft);margin:8px 0 0}
+.savebar{position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(33,27,44,.06);padding:10px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;z-index:5;border-radius:12px 12px 0 0}
+.savebar .sep{width:1px;height:26px;background:var(--line-strong)}
+.savebar .status{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);margin-inline-start:auto}
+.btn{font:inherit;font-weight:600;font-size:14px;padding:9px 16px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);color:var(--accent-ink)}
+.btn.small{font-size:13px;padding:6px 12px}
+.doc-footer{margin-top:28px;font-size:12px;color:var(--ink-faint);line-height:1.6}
+.doc-footer .mono{font-family:var(--font-mono)}
+#print-area{display:none}
+/* export document */
+.export{font-family:var(--font-body);color:#211b2c;background:#fff;font-size:12px;line-height:1.45}
+.export .section-card{box-shadow:none;border-color:#c3bbcf;page-break-inside:auto;margin-bottom:14px}
+.export .section-head{background:#ece3f2;border-color:#c3bbcf;padding:10px 14px}
+.export .section-letter{background:#5b3a73;color:#fff}
+.export .section-body{padding:10px 14px 12px}
+.export .field{gap:2px}
+.export .field .lbl{color:#635c70;font-size:10.5px}
+.export .val{font-size:12px;color:#211b2c;padding:3px 0;border-bottom:1px solid #ddd7e2;min-height:18px;white-space:pre-wrap;word-break:break-word}
+.export .val.empty{color:#948da0;font-style:italic}
+.export .val.mono{font-family:var(--font-mono)}
+.export .choices label{border-color:#c3bbcf;background:#f8f6fa;color:#211b2c}
+.export .doc-header h1{font-size:20px}
+.export .block{background:#f8f6fa;border-color:#ddd7e2;page-break-inside:avoid}
+.export .group{page-break-inside:avoid}
+.export .fields{gap:8px 14px}
+.export fieldset{border:0;padding:0;margin:0;min-width:0}
+@media print{
+  body{background:#fff}
+  .layout,.savebar{display:none!important}
+  #print-area{display:block!important}
+  @page{size:A4;margin:24pt}
+}
+</style>
+</head>
+<body>
+<div id="case-data" hidden></div>
+<div class="layout">
+  <nav class="side-nav" aria-label="Sections">
+    <p class="docno">414D.00.05 · Rev F</p>
+    <div id="nav-links"></div>
+  </nav>
+  <main class="content" id="content">
+    <header class="doc-header" id="doc-header">
+      <div>
+        <div class="brand">Alma Lasers<small data-i18n="ui.overline">Adverse Event · Quality &amp; Regulatory</small></div>
+        <h1 data-i18n="ui.title">Potential Injury Report Form</h1>
+        <div class="rev">414D.00.05 · Rev F</div>
+        <div class="ae-numbers">
+          <div class="field"><label for="aeIncNumber" data-i18n="ui.aeInc">AE INC Number</label><input type="text" id="aeIncNumber" name="aeIncNumber" data-field="aeIncNumber"></div>
+          <div class="field"><label for="aeLtdNumber" data-i18n="ui.aeLtd">AE LTD Number</label><input type="text" id="aeLtdNumber" name="aeLtdNumber" data-field="aeLtdNumber"></div>
+        </div>
+      </div>
+      <button type="button" class="btn small lang-toggle" id="lang-toggle" aria-label="Switch language">עברית</button>
+    </header>
+    <section class="instructions" id="instructions">
+      <h2 data-i18n="ui.instructions">Instructions</h2>
+      <ol>
+        <li data-i18n="ui.instr1"></li><li data-i18n="ui.instr2"></li><li data-i18n="ui.instr3"></li>
+        <li data-i18n="ui.instr4"></li><li data-i18n="ui.instr5"></li><li data-i18n="ui.instr6"></li>
+      </ol>
+    </section>
+    <div class="banner-slot" id="banner-slot" aria-live="polite"></div>
+    <div id="sections"></div>
+    <details class="section-card" id="reference">
+      <summary class="section-head"><span class="section-letter">i</span><div><h2 data-i18n="ui.refTitle">Reportability Reference Material</h2><div class="by" data-i18n="ui.refBy">For reference only · not part of the case record</div></div></summary>
+      <div class="section-body">
+        <p class="ref-intro" data-i18n="ui.refIntro"></p>
+        <div class="group"><h3>F2</h3>
+          <div class="fig"><b>F2 – Reportability Determination Decision Tree – ROW</b><span data-i18n="ui.figPlaceholder"></span></div>
+          <div class="fig"><b>F2 – Reportability Determination Decision Tree – FDA/HC</b><span data-i18n="ui.figPlaceholder"></span></div>
+        </div>
+        <div class="group"><h3>F3 · <span data-i18n="ui.f3Title">Global Reportability Assessment</span></h3>
+          <div class="table-wrap"><table class="f3" id="f3-table"></table></div>
+          <p class="footnote" data-i18n="ui.footnote"></p>
+        </div>
+      </div>
+    </details>
+    <footer class="doc-footer">
+      <p data-i18n="ui.footerLegal"></p>
+      <p class="mono" data-i18n="ui.footerGen"></p>
+    </footer>
+  </main>
+</div>
+<div class="savebar" id="savebar">
+  <button type="button" class="btn primary" id="btn-save" data-i18n="ui.save">Save Case Record</button>
+  <span class="sep"></span>
+  <button type="button" class="btn" id="btn-pdf" data-i18n="ui.download">Download PDF</button>
+  <button type="button" class="btn" id="btn-print" data-i18n="ui.print">Print / Save as PDF</button>
+  <span class="sep"></span>
+  <button type="button" class="btn" id="btn-new" data-i18n="ui.newCase">New Case</button>
+  <span class="status" id="status-save"></span>
+  <span class="status" id="status-pdf"></span>
+</div>
+<div id="print-area"></div>
+
+<script>
+(function(){
+'use strict';
+/* ---------------- Static UI strings ---------------- */
+var UI = {
+  en:{
+    overline:"Adverse Event · Quality & Regulatory", title:"Potential Injury Report Form",
+    aeInc:"AE INC Number", aeLtd:"AE LTD Number", instructions:"Instructions",
+    instr1:"Sections A, B and C are completed by the complainant (customer / clinic) and sent to Alma Lasers Customer Service or the local distributor.",
+    instr2:"Section D is completed by Technical Support and forwarded to the Clinical Department.",
+    instr3:"Section E is completed by the Clinical Department and forwarded to Quality & Regulatory.",
+    instr4:"Sections F and G are completed by the Regulatory Department.",
+    instr5:"Fill in every field that applies; if information is unknown or not applicable, write N/A rather than leaving the field blank.",
+    instr6:"In Section C complete only the treatment block relevant to the event and mark all other blocks Not Applicable.",
+    refTitle:"Reportability Reference Material", refBy:"For reference only · not part of the case record",
+    refIntro:"From the source document – decision trees and reporting windows by market, used by the Regulatory Department when completing Section F. For reference only, not part of the case record.",
+    figPlaceholder:"Figure placeholder – the original decision-tree image is inserted here.",
+    f3Title:"Global Reportability Assessment",
+    thMarket:"Market", thSeverity:"Severity of Event / Incident", thWithin:"Report within", thReportable:"Reportable", thComments:"Comments",
+    footnote:"* A single event of serious injury, misuse or malfunction is reported only in the country in which it occurred.",
+    footerLegal:"This document contains confidential and proprietary information of Alma Lasers Ltd. It may not be copied, disclosed or used, in whole or in part, without the prior written consent of Alma Lasers Ltd.",
+    footerGen:"Produced as a digital version of document 414D.00.05 · Rev F · Potential Injury Report Form",
+    save:"Save Case Record", download:"Download PDF", print:"Print / Save as PDF", newCase:"New Case",
+    saving:"Saving…", lastSaved:"Last saved", downloading:"Downloading…", downloaded:"Downloaded",
+    applicable:"Applicable", notApplicable:"Not Applicable", filledBy:"To be completed by",
+    signature:"Approval Signature", sigPlaceholder:"Typed name stands in for signature",
+    bannerLocal:"Saved locally in this browser only – this environment has no shared document store, so the change will not be visible to other viewers.",
+    bannerConflict:"Your last change was not saved because someone else saved at the same time. Please review the highlighted fields and save again.",
+    bannerSaved:"Case record saved.", bannerPdfFail:"The PDF could not be generated. Try Print / Save as PDF instead.",
+    bannerCleared:"Form cleared. The saved case record was not changed.",
+    confirmNew:"Start a new case? All fields on screen will be cleared. The saved case record is not affected.",
+    notProvided:"Not provided", notSpecified:"Not specified", yes:"Yes", no:"No",
+    byComplainant:"To be completed by the complainant", byComplainantC:"To be completed by the complainant – relevant treatment block only",
+    byTech:"To be completed by Technical Support", byClinical:"To be completed by the Clinical Department", byReg:"To be completed by the Regulatory Department"
+  },
+  he:{
+    overline:"אירוע חריג · איכות ורגולציה", title:"טופס דיווח על פגיעה אפשרית",
+    aeInc:"מספר AE INC", aeLtd:"מספר AE LTD", instructions:"הוראות",
+    instr1:"סעיפים A, B ו-C ימולאו על ידי המתלונן/ת (לקוח / מרפאה) ויישלחו לשירות הלקוחות של Alma Lasers או למפיץ המקומי.",
+    instr2:"סעיף D ימולא על ידי התמיכה הטכנית ויועבר למחלקה הקלינית.",
+    instr3:"סעיף E ימולא על ידי המחלקה הקלינית ויועבר למחלקת האיכות והרגולציה.",
+    instr4:"סעיפים F ו-G ימולאו על ידי מחלקת הרגולציה.",
+    instr5:"יש למלא כל שדה רלוונטי; כאשר המידע אינו ידוע או אינו רלוונטי, יש לכתוב N/A ולא להשאיר את השדה ריק.",
+    instr6:"בסעיף C יש למלא רק את בלוק הטיפול הרלוונטי לאירוע ולסמן את שאר הבלוקים כ-Not Applicable.",
+    refTitle:"חומר עזר לדיווח", refBy:"לעיון בלבד · לא חלק מרשומת המקרה",
+    refIntro:"מהמסמך המקורי – עצי החלטה וחלונות דיווח לפי שוק, המשמשים את מחלקת הרגולציה למילוי סעיף F. לעיון בלבד, לא חלק מרשומת המקרה.",
+    figPlaceholder:"מקום שמור לתרשים – תמונת עץ ההחלטה המקורית תשולב כאן.",
+    f3Title:"הערכת דיווח גלובלית",
+    thMarket:"שוק", thSeverity:"חומרת האירוע", thWithin:"לדווח בתוך", thReportable:"בר-דיווח", thComments:"הערות",
+    footnote:"* אירוע בודד של פגיעה חמורה, שימוש לא נכון או תקלה ידווח רק במדינה שבה אירע.",
+    footerLegal:"מסמך זה מכיל מידע סודי וקנייני של Alma Lasers Ltd. אין להעתיקו, לגלותו או להשתמש בו, במלואו או בחלקו, ללא הסכמה מראש ובכתב של Alma Lasers Ltd.",
+    footerGen:"הופק בגרסה דיגיטלית ממסמך 414D.00.05 · Rev F · טופס דיווח על פגיעה אפשרית",
+    save:"שמירת רשומת המקרה", download:"הורדת PDF", print:"הדפסה / שמירה כ-PDF", newCase:"מקרה חדש",
+    saving:"שומר…", lastSaved:"נשמר לאחרונה", downloading:"מוריד…", downloaded:"הורד",
+    applicable:"רלוונטי", notApplicable:"לא רלוונטי", filledBy:"ימולא על ידי",
+    signature:"חתימת אישור", sigPlaceholder:"שם מוקלד במקום חתימה",
+    bannerLocal:"נשמר מקומית בדפדפן זה בלבד – בסביבה זו אין מאגר מסמכים משותף, ולכן השינוי לא ישותף עם צופים אחרים.",
+    bannerConflict:"השינוי האחרון שלכם לא נשמר משום שמישהו אחר שמר באותו רגע. נא לבדוק את השדות המסומנים ולשמור שוב.",
+    bannerSaved:"רשומת המקרה נשמרה.", bannerPdfFail:"לא ניתן היה להפיק את ה-PDF. נסו Print / Save as PDF במקום זאת.",
+    bannerCleared:"הטופס נוקה. רשומת המקרה השמורה לא שונתה.",
+    confirmNew:"להתחיל מקרה חדש? כל השדות על המסך יימחקו. רשומת המקרה השמורה לא תושפע.",
+    notProvided:"לא סופק", notSpecified:"לא צוין", yes:"כן", no:"לא",
+    byComplainant:"ימולא על ידי המתלונן/ת", byComplainantC:"ימולא על ידי המתלונן/ת – רק בלוק הטיפול הרלוונטי",
+    byTech:"ימולא על ידי התמיכה הטכנית", byClinical:"ימולא על ידי המחלקה הקלינית", byReg:"ימולא על ידי מחלקת הרגולציה"
+  }
+};
+
+/* ---------------- Field schema ---------------- */
+function F(id,en,he,type,x){var o={id:id,en:en,he:he,type:type||'text'};if(x)for(var k in x)o[k]=x[k];return o;}
+var YN=[["Yes","כן"],["No","לא"]], YNNA=[["Yes","כן"],["No","לא"],"N/A"];
+function sig(p){return {en:"Approval Signature",he:"חתימת אישור",cls:"sig",fields:[
+  F(p+"_title","Approver Title","תפקיד המאשר/ת"),F(p+"_name","Name","שם"),
+  F(p+"_signature","Signature","חתימה","text",{placeholder:true}),F(p+"_date","Date","תאריך","date")]};}
+
+var SECTIONS=[
+ {letter:"A",en:"Complaint Information",he:"פרטי התלונה",by:"byComplainant",groups:[
+  {en:"Section A1: General Information",he:"סעיף A1: מידע כללי",fields:[
+   F("a1_facilityName","Facility Name / Customer Name","שם המתקן / שם הלקוח"),
+   F("a1_bpNumber","Customer Business Partner Number","מספר שותף עסקי של הלקוח"),
+   F("a1_facilityAddress","Facility Address","כתובת המתקן"),
+   F("a1_contactPhone","Contact Phone Number","טלפון ליצירת קשר"),
+   F("a1_email","Email Address","כתובת דוא\"ל"),
+   F("a1_clinicalContact","Clinical Contact","איש קשר קליני"),
+   F("a1_incidentDate","Incident Date (Date of Event)","תאריך האירוע","date"),
+   F("a1_awarenessDate","Awareness Date","תאריך המודעות","date"),
+   F("a1_wayOfReporting","Way of reporting (By phone, by mail - attached, other)","אופן הדיווח (בטלפון, בדוא\"ל – מצורף, אחר)"),
+   F("a1_ltdAwarenessDate","LTD Awareness Date","תאריך המודעות של LTD","date"),
+   F("a1_initialReporter","Initial Reporter","מדווח/ת ראשוני/ת"),
+   F("a1_initialReporterPosition","Initial Reporter's Position","תפקיד המדווח/ת הראשוני/ת"),
+   F("a1_recipientName","Recipient Name","שם המקבל/ת"),
+   F("a1_practitioner","Name and Role of the practitioner/operator directly involved with the patient's treatment","שם ותפקיד המטפל/ת / המפעיל/ה שהיו מעורבים ישירות בטיפול במטופל/ת"),
+   F("a1_complaintDetails","Details of complaint (as introduced by the complainant)","פרטי התלונה (כפי שהוצגו על ידי המתלונן/ת)","textarea"),
+   F("a1_pictures","Were pictures/videos of the injury provided?","האם סופקו תמונות/סרטונים של הפגיעה?","radio",{options:YN})]},
+  {en:"Section A2: Patient Clinical Information",he:"סעיף A2: מידע קליני על המטופל/ת",sub:{en:"Patient Details",he:"פרטי המטופל/ת"},fields:[
+   F("a2_dob","Date of Birth","תאריך לידה","date"),
+   F("a2_skinType","Skin Type","סוג עור"),
+   F("a2_gender","Gender (Other)","מגדר (אחר)","radio",{options:["F","M","O"]}),
+   F("a2_eyeColor","Eye Color","צבע עיניים"),
+   F("a2_medicalConditions","Background Medical Conditions","מצבים רפואיים ברקע"),
+   F("a2_medications","Background Medications being used","תרופות רקע בשימוש"),
+   F("a2_diagnosis","Diagnosis (burn, crust, other)","אבחנה (כווייה, גלד, אחר)"),
+   F("a2_diagnosisBy","Diagnosis is given by","האבחנה ניתנה על ידי"),
+   F("a2_injuryLocation","Injury Anatomic Location","מיקום אנטומי של הפגיעה"),
+   F("a2_postInjuryCare","Type of post-injury/treatment medical care","סוג הטיפול הרפואי לאחר הפגיעה/הטיפול"),
+   F("a2_skinTest","Skin test performed prior to treatment","בוצע מבחן עור לפני הטיפול","radio",{options:YN}),
+   F("a2_otherComments","Other Comments","הערות נוספות","textarea")]}]},
+ {letter:"B",en:"Product Information",he:"פרטי המוצר",by:"byComplainant",groups:[
+  {en:"System used",he:"מערכת בשימוש",fields:[F("b_sysModel","Model","דגם"),F("b_sysSerial","Serial Number","מספר סידורי"),F("b_sysUdi","UDI Number","מספר UDI")]},
+  {en:"Applicator(s) used",he:"אפליקטור/ים בשימוש",fields:[F("b_appModel","Model","דגם"),F("b_appSerial","Serial Number","מספר סידורי"),F("b_appWavelength","Wavelength nm, if applicable","אורך גל nm, אם רלוונטי","text",{unit:"nm"}),F("b_appUdi","UDI Number","מספר UDI")]},
+  {en:"Tip(s) used",he:"ראש/ים בשימוש",fields:[F("b_tipModel","Model","דגם"),F("b_tipLot","Lot Number","מספר אצווה"),F("b_tipUdi","UDI Number","מספר UDI")]},
+  {en:"Disposable",he:"מתכלה",fields:[F("b_dispModel","Model","דגם"),F("b_dispLot","Lot Number","מספר אצווה"),F("b_dispUdi","UDI Number","מספר UDI")]},
+  {fields:[F("b_productionDate","System production date","תאריך ייצור המערכת"),F("b_durationUsage","Duration of system usage","משך השימוש במערכת"),F("b_indication","Indication for treatment","התוויה לטיפול")]}]},
+ {letter:"C",en:"Parameters of Treatment",he:"פרמטרי הטיפול",by:"byComplainantC",blocks:[
+  {code:"C1",en:"Laser/Light Treatments",he:"טיפולי לייזר/אור",toggle:"c1_applicable",groups:[{fields:[
+   F("c1_fluence","Treatment Fluence","פלואנס הטיפול"),F("c1_skinTestFluence","Skin Test Fluence","פלואנס מבחן העור"),
+   F("c1_spotSize","Spot Size","גודל ספוט"),F("c1_skinTestSpotSize","Skin Test Spot Size","גודל ספוט במבחן העור"),
+   F("c1_pulseWidth","Pulse Width","רוחב פולס"),F("c1_skinTestPulseWidth","Skin Test Pulse Width","רוחב פולס במבחן העור"),
+   F("c1_repRate","Pulse Repetition Rate (Hz)","קצב חזרת פולסים (Hz)"),F("c1_numTreatments","Number of Treatments","מספר טיפולים"),
+   F("c1_numPasses","Number of Passes","מספר מעברים"),F("c1_coolingMeans","Cooling means","אמצעי קירור")]}]},
+  {code:"C2",en:"RF Treatments",he:"טיפולי RF",toggle:"c2_applicable",groups:[{fields:[
+   F("c2_energy","Energy (Watt)","אנרגיה (Watt)"),F("c2_time","Time (sec)","זמן (sec)"),F("c2_accumEnergy","Accumulated Energy (kJ)","אנרגיה מצטברת (kJ)"),F("c2_cooling","Cooling","קירור")]}]},
+  {code:"C2 · Pre-Therapeutic Phase",en:"Pre-Therapeutic Phase",he:"שלב טרום-טיפולי",toggle:"c2pre_applicable",groups:[{fields:[
+   F("c2pre_totalEnergy","Total Energy (kJ)","אנרגיה כוללת (kJ)"),F("c2pre_erythema","Erythema","אריתמה","radio",{options:YN}),
+   F("c2pre_tempBefore","Skin Temp before treatment","טמפרטורת העור לפני הטיפול"),F("c2pre_tempDuring","Skin Temp during the phase","טמפרטורת העור במהלך השלב"),
+   F("c2pre_temp45","Skin Temperature <45C","טמפרטורת העור <45C","radio",{options:YN})]}]},
+  {code:"C2 · Therapeutic Phase",en:"Therapeutic Phase",he:"שלב טיפולי",toggle:"c2ther_applicable",groups:[{fields:[
+   F("c2ther_totalEnergy","Total Energy (kJ)","אנרגיה כוללת (kJ)"),F("c2ther_erythema","Erythema","אריתמה","radio",{options:YN}),
+   F("c2ther_temp45","Skin Temperature <45C","טמפרטורת העור <45C","radio",{options:YN}),F("c2ther_endPoints","End points","נקודות סיום")]}]},
+  {code:"C3",en:"RF Pixel Treatments",he:"טיפולי RF Pixel",toggle:"c3_applicable",groups:[
+   {en:"In-Motion",he:"בתנועה",h4:true,fields:[F("c3_inMotionEnergy","Energy (Watt)","אנרגיה (Watt)"),F("c3_inMotionRfPhase","RF phase/ Plasma %","פאזת RF / % פלזמה"),F("c3_inMotionPasses","Number of Passes","מספר מעברים"),F("c3_inMotionArea","Treatment Area","אזור הטיפול")]},
+   {en:"Stationary",he:"נייח",h4:true,fields:[F("c3_statEnergy","Energy (Watt)","אנרגיה (Watt)"),F("c3_statRfPhase","RF phase/ Plasma %","פאזת RF / % פלזמה"),F("c3_statExposure","Exposure Time","זמן חשיפה"),F("c3_statPasses","Number of Passes","מספר מעברים")]}]},
+  {code:"C4",en:"Ultrasound Treatment",he:"טיפול אולטרסאונד",toggle:"c4_applicable",groups:[{fields:[
+   F("c4_power","Power (Watt)","הספק (Watt)"),F("c4_treatmentTime","Treatment Time","זמן הטיפול"),F("c4_impulse","Impulse","אימפולס"),F("c4_impulseFreq","Impulse Frequency","תדירות האימפולס"),
+   F("c4_comments","Other applicable comments","הערות רלוונטיות נוספות","textarea")]}]},
+  {code:"C5",en:"Li-ESWT (Shockwave)",he:"Li-ESWT (גלי הלם)",toggle:"c5_applicable",groups:[{fields:[
+   F("c5_pulsesPerArea","Number of Pulses per treatment area","מספר פולסים לאזור טיפול"),F("c5_totalPulses","Total number of pulses","מספר פולסים כולל"),
+   F("c5_comments","Other applicable comments","הערות רלוונטיות נוספות","textarea")]}]},
+  {code:"C6",en:"1470 Treatment-Vein",he:"טיפול 1470 – ורידים",toggle:"c6_applicable",groups:[{fields:[
+   F("c6_operationMode","Operation Mode","מצב הפעלה"),F("c6_powerSetting","Power Setting","הגדרת הספק"),F("c6_totalEnergy","Total Energy","אנרגיה כוללת")]}]},
+  {code:"C7",en:"1470 Treatment - Lipo",he:"טיפול 1470 – ליפו",toggle:"c7_applicable",groups:[{fields:[
+   F("c7_operationMode","Operation Mode","מצב הפעלה"),F("c7_powerSetting","Power Setting","הגדרת הספק"),F("c7_totalEnergy","Total Energy","אנרגיה כוללת")]}]},
+  {code:"C7 · LipoFlow",en:"LipoFlow",he:"LipoFlow",toggle:"c7lf_applicable",groups:[{fields:[
+   F("c7lf_pumpFlowRate","Peristaltic Pump Flow Rate","קצב זרימת המשאבה הפריסטלטית"),F("c7lf_vacuumRate","Vacuum Control Rate","קצב בקרת ואקום")]}]},
+  {code:"C8",en:"LMNT Treatment",he:"טיפול LMNT",toggle:"c8_applicable",groups:[{fields:[
+   F("c8_motion","Motion type","סוג תנועה","checkgroup",{items:[F("c8_inMotion","In Motion","בתנועה"),F("c8_stacking","Stacking","Stacking"),F("c8_stationaryContact","Stationary Contact","מגע נייח")]}),
+   F("c8_area","Treatment area","אזור הטיפול","checkgroup",{items:[F("c8_areaCheeks","Cheek(s)","לחי/יים"),F("c8_areaForehead","Forehead","מצח"),F("c8_areaPerioral","Perioral area","אזור סביב הפה"),F("c8_areaPeriorbital","Periorbital area","אזור סביב העיניים"),F("c8_areaOther","Other","אחר","checkbox",{other:"c8_areaOtherText"})]}),
+   F("c8_time","Treatment Time per session","זמן טיפול למפגש","radio",{options:[["More than 30 minutes","יותר מ-30 דקות"],["Less than 30 minutes","פחות מ-30 דקות"]]}),
+   F("c8_frequency","Treatment frequency (per week)","תדירות הטיפול (בשבוע)"),
+   F("c8_type","Treatment type with LMNT","סוג הטיפול עם LMNT","checkgroup",{items:[F("c8_typePrimary","Primary Procedure","פרוצדורה ראשית"),F("c8_typePostCare","Post-Treatment Care - subsequent to clinic procedure with","טיפול לאחר טיפול – בעקבות פרוצדורה במרפאה עם","checkbox",{other:"c8_postCareText"})]}),
+   F("c8_light","Light indicators","מחווני אור","checkgroup",{items:[F("c8_lightRed","Red","אדום"),F("c8_lightBlue","Blue","כחול")]}),
+   F("c8_skincare","Skincare Products combined with LMNT","מוצרי טיפוח בשילוב עם LMNT","radio",{options:YN}),
+   F("c8_skincareKind","If yes, what kind? (Cream, Serum, etc.)","אם כן, מאיזה סוג? (קרם, סרום וכו')"),
+   F("c8_comments","Other applicable comments","הערות רלוונטיות נוספות","textarea")]}]},
+  {code:"C9",en:"Derma Clear Treatment",he:"טיפול Derma Clear",toggle:"c9_applicable",groups:[{fields:[
+   F("c9_operationMode","Operation Mode","מצב הפעלה"),F("c9_flowRateSetting","Flow Rate Setting","הגדרת קצב זרימה"),F("c9_pressureSetting","Pressure setting","הגדרת לחץ","text",{unit:"kPa"}),
+   F("c9_workingTime","Working time","זמן עבודה"),F("c9_programMode","Program mode","מצב תוכנית")]}]},
+  {code:"C10",en:"Ted Treatment",he:"טיפול Ted",toggle:"c10_applicable",groups:[{fields:[
+   F("c10_treatmentZones","# of Treatment Zones","מספר אזורי טיפול"),F("c10_comments","Other applicable comments","הערות רלוונטיות נוספות","textarea")]}]}
+ ]},
+ {letter:"D",en:"Technical Investigation",he:"בדיקה טכנית",by:"byTech",groups:[
+  {en:"Section D1: Notes (Additional Information)",he:"סעיף D1: הערות (מידע נוסף)",fields:[F("d1_attempt1","Attempt 1, date","ניסיון 1, תאריך","date"),F("d1_attempt2","Attempt 2, date","ניסיון 2, תאריך","date"),F("d1_attempt3","Attempt 3, date","ניסיון 3, תאריך","date")]},
+  {en:"Section D2: Device Retrieval",he:"סעיף D2: איסוף המכשיר",fields:[
+   F("d2_return","Device Return Requested","התבקשה החזרת המכשיר","radio",{options:YNNA}),F("d2_rma","RMA #","מספר RMA"),
+   F("d2_reasonIfNo","Reason if No or N/A","סיבה אם לא או N/A"),F("d2_serviceCallNumber","Service Call / Complaint Number","מספר קריאת שירות / תלונה")]},
+  {en:"Section D3: Device Inspection",he:"סעיף D3: בדיקת המכשיר",fields:[
+   F("d3_inspectionResults","Inspection Results","תוצאות הבדיקה","textarea"),
+   F("d3_conclusion","Inspection Conclusions","מסקנות הבדיקה","radio",{options:[["Meets Specs","עומד במפרט"],["Did not meet specs (see QC Form)","לא עמד במפרט (ראו טופס QC)"],["Cannot be tested/was not returned","לא ניתן לבדיקה / לא הוחזר"]]}),
+   F("d3_disposition","Device Disposition","מה נעשה במכשיר","radio",{options:[["Returned to Customer","הוחזר ללקוח"],["Returned to Vendor/Manufacturer","הוחזר לספק/יצרן"],["Device was not returned for service","המכשיר לא הוחזר לשירות"]]}),
+   F("d3_dispositionOther","Device Disposition: Other","מה נעשה במכשיר: אחר","checkbox",{other:"d3_dispositionOtherText"})]},
+  sig("d3")]},
+ {letter:"E",en:"Clinical Assessment",he:"הערכה קלינית",by:"byClinical",groups:[
+  {fields:[F("e_medicalAssessment","Medical Assessment","הערכה רפואית","textarea"),
+   F("e_severity","Severity","חומרה","radio",{options:["1","2","3","4","5","6","7","8","9","10",["Insufficient information","מידע לא מספק"]]}),
+   F("e_burnDegree","In case of a burn, and if possible, please define the burn degree","במקרה של כווייה, ואם ניתן, נא להגדיר את דרגת הכווייה")]},
+  {en:"Clinical Root Cause Evaluation",he:"הערכת שורש הבעיה הקלינית",fields:[
+   F("e_rootCause","Root Cause","שורש הבעיה","textarea"),F("e_clinicalEvaluation","Clinical Evaluation","הערכה קלינית","textarea"),F("e_conclusion","Conclusion","מסקנה","textarea"),
+   F("e_commSent","Customer Communication Sent?","נשלחה תקשורת ללקוח?","radio",{options:[["Yes","כן"],["No","לא"],"NA"]}),
+   F("e_dateCommSent","Date Communication Sent","תאריך שליחת התקשורת","date"),
+   F("e_followUp","Patient Follow up","מעקב אחר המטופל/ת","radio",{options:[["Yes","כן"],["No","לא"],"NA"]})]},
+  sig("e")]},
+ {letter:"F",en:"Reportability Decision",he:"החלטת דיווח",by:"byReg",groups:[
+  {fields:[F("f_reportable","Reportable?","בר-דיווח?","radio",{options:YN}),
+   F("f_type","If Yes, report type","אם כן, סוג הדיווח","checkgroup",{items:[F("f_type30","30-Day","30 יום"),F("f_type5","5-day","5 ימים"),F("f_type2","2-Day","יומיים"),F("f_type10","10-day Report","דיווח 10 ימים"),F("f_type15","15-day Report","דיווח 15 ימים")]}),
+   F("f_to","Reported to","דווח ל","checkgroup",{items:[F("f_toFDA","FDA","FDA"),F("f_toHC","HC","HC"),F("f_toMHRA","MHRA","MHRA"),F("f_toTGA","TGA","TGA"),F("f_toANVISA","ANVISA","ANVISA"),F("f_toPMDA","PMDA","PMDA"),F("f_toEUDAMED","EUDAMED","EUDAMED"),F("f_toMIR","MIR","MIR"),F("f_toTrend","Trend Report","דוח מגמות"),
+    F("f_toNotifyBody","Notify Body","גוף מודיע","checkbox",{other:"f_notifyBodyText"}),F("f_toAuthRep","Authorized Representative","נציג מורשה","checkbox",{other:"f_authRepText"}),F("f_toCompAuth","Competent Authority","רשות מוסמכת","checkbox",{other:"f_compAuthText"}),F("f_toOther","Other","אחר","checkbox",{other:"f_otherText"})]}),
+   F("f_reportNumber","Report Number","מספר הדיווח"),F("f_dateOfReporting","Date of Reporting","תאריך הדיווח","date"),
+   F("f_summary","Summary (Investigation Process Method Based on QC Report, Trends, open CAPA's, etc.)","סיכום (שיטת תהליך החקירה בהתבסס על דוח QC, מגמות, CAPA פתוחים וכו')","textarea"),
+   F("f_newHazards","New hazards or potential risks identified?","זוהו סיכונים חדשים או סיכונים פוטנציאליים?","textarea"),
+   F("f_probableRootCause","Probable Root Cause","שורש בעיה משוער","textarea"),
+   F("f_capa","CAPA Required?","נדרש CAPA?","radio",{options:YN}),F("f_capaNumber","CAPA Number","מספר CAPA"),F("f_rationale","Rationale","נימוק")]},
+  sig("f")]},
+ {letter:"G",en:"Closure",he:"סגירה",by:"byReg",groups:[
+  {fields:[F("g_closureNotes","Closure notes (if applicable)","הערות סגירה (אם רלוונטי)","textarea")]},sig("g")]}
+];
+
+/* F3 table data */
+var F3=[
+ {m:["Australia","אוסטרליה"],c:["No serious injury | Injury will not cause serious health deterioration","אין פגיעה חמורה | הפגיעה לא תגרום להידרדרות חמורה במצב הבריאות"],rows:[
+  [["Serious public health threat","איום חמור על בריאות הציבור"],"48 hours"],[["Death or serious deterioration of health","מוות או הידרדרות חמורה במצב הבריאות"],"10 days"],[["Recurrence could lead to death or serious health deterioration","הישנות עלולה להוביל למוות או להידרדרות חמורה במצב הבריאות"],"30 days"]]},
+ {m:["Brazil","ברזיל"],c:["No serious injury | Injury will not cause serious health deterioration","אין פגיעה חמורה | הפגיעה לא תגרום להידרדרות חמורה במצב הבריאות"],rows:[
+  [["Death or serious deterioration of health","מוות או הידרדרות חמורה במצב הבריאות"],"72 hours"],[["Serious adverse event, but not death","אירוע חריג חמור, אך לא מוות"],"10 days"],[["Recurrence could lead to death or serious health deterioration","הישנות עלולה להוביל למוות או להידרדרות חמורה במצב הבריאות"],"30 days"]]},
+ {m:["Canada","קנדה"],c:["No serious injury | Injury will not cause serious health deterioration","אין פגיעה חמורה | הפגיעה לא תגרום להידרדרות חמורה במצב הבריאות"],rows:[
+  [["Death or serious deterioration of health","מוות או הידרדרות חמורה במצב הבריאות"],"10 days"],[["Recurrence could lead to death or serious health deterioration","הישנות עלולה להוביל למוות או להידרדרות חמורה במצב הבריאות"],"30 days"]]},
+ {m:["Europe","אירופה"],c:["No serious injury | No public health threats, death, or serious deterioration of health","אין פגיעה חמורה | אין איום על בריאות הציבור, מוות או הידרדרות חמורה במצב הבריאות"],rows:[
+  [["Serious public health threat","איום חמור על בריאות הציבור"],"48 hours"],[["Death or unanticipated serious deterioration in state of health","מוות או הידרדרות חמורה בלתי צפויה במצב הבריאות"],"10 days"],[["Serious Incident","אירוע חמור"],"15 days"]]},
+ {m:["UK","בריטניה"],c:["No serious public health threats | No death or unanticipated serious deterioration in state of health | No serious injury","אין איום חמור על בריאות הציבור | אין מוות או הידרדרות חמורה בלתי צפויה במצב הבריאות | אין פגיעה חמורה"],rows:[
+  [["Serious public health threat","איום חמור על בריאות הציבור"],"48 hours"],[["Death or unanticipated serious deterioration in state of health","מוות או הידרדרות חמורה בלתי צפויה במצב הבריאות"],"10 days"],[["All other serious incidents","כל שאר האירועים החמורים"],"15 days"]]},
+ {m:["Japan","יפן"],c:["The product is not registered in Japan","המוצר אינו רשום ביפן"],rows:[
+  [["Death plus malfunctions, faults, and breakage","מוות בתוספת תקלות, כשלים ושברים"],"15 days"],[["Serious events","אירועים חמורים"],"30 days"]]},
+ {m:["USA","ארה\"ב"],c:["No serious injury | No malfunctions | No Death or remedial action needed","אין פגיעה חמורה | אין תקלות | אין מוות או צורך בפעולה מתקנת"],rows:[
+  [["Death, Remedial action needed to prevent risk of substantial harm","מוות, נדרשת פעולה מתקנת למניעת סיכון לנזק משמעותי"],"5 days"],[["Serious injuries, Misuse, or malfunctions","פגיעות חמורות, שימוש לא נכון או תקלות"],"30 days"]]}
+];
+
+/* ---------------- Dictionary build ---------------- */
+var DICT={en:{},he:{}};
+function reg(key,en,he){DICT.en[key]=en;DICT.he[key]=(he==null?en:he);}
+for(var k in UI.en){reg("ui."+k,UI.en[k],UI.he[k]);}
+function regOpts(id,options){for(var i=0;i<options.length;i++){var o=options[i];if(typeof o==="string")reg("o."+id+"."+i,o,o);else reg("o."+id+"."+i,o[0],o[1]);}}
+function regField(f){reg("f."+f.id,f.en,f.he);if(f.options)regOpts(f.id,f.options);if(f.items)for(var i=0;i<f.items.length;i++)regField(f.items[i]);}
+function regGroup(g){if(g.en)reg("g."+(g.key=g.key||("g"+(regGroup.n=(regGroup.n||0)+1))),g.en,g.he);if(g.sub)reg("g."+g.key+".sub",g.sub.en,g.sub.he);for(var i=0;i<g.fields.length;i++)regField(g.fields[i]);}
+for(var s=0;s<SECTIONS.length;s++){var S=SECTIONS[s];reg("s."+S.letter,S.en,S.he);
+  if(S.groups)for(var g=0;g<S.groups.length;g++)regGroup(S.groups[g]);
+  if(S.blocks)for(var b=0;b<S.blocks.length;b++){var B=S.blocks[b];reg("b."+B.toggle,B.en,B.he);for(var g2=0;g2<B.groups.length;g2++)regGroup(B.groups[g2]);}}
+for(var m=0;m<F3.length;m++){reg("f3.m"+m,F3[m].m[0],F3[m].m[1]);reg("f3.c"+m,F3[m].c[0],F3[m].c[1]);for(var r=0;r<F3[m].rows.length;r++)reg("f3.r"+m+"_"+r,F3[m].rows[r][0][0],F3[m].rows[r][0][1]);}
+
+/* ---------------- Rendering ---------------- */
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function optVal(o){return typeof o==="string"?o:o[0];}
+function renderField(f){
+  var h="";
+  if(f.type==="text"||f.type==="date"){
+    var inp='<input type="'+f.type+'" id="'+f.id+'" name="'+f.id+'" data-field="'+f.id+'"'+(f.placeholder?' data-i18n-placeholder="ui.sigPlaceholder"':'')+'>';
+    if(f.unit)inp='<div class="unit-wrap">'+inp+'<span class="unit">'+f.unit+'</span></div>';
+    h='<div class="field"><label for="'+f.id+'" data-i18n="f.'+f.id+'"></label>'+inp+'</div>';
+  }else if(f.type==="textarea"){
+    h='<div class="field wide"><label for="'+f.id+'" data-i18n="f.'+f.id+'"></label><textarea id="'+f.id+'" name="'+f.id+'" data-field="'+f.id+'"></textarea></div>';
+  }else if(f.type==="radio"){
+    h='<fieldset class="field wide" data-radio="'+f.id+'" style="border:0;padding:0;margin:0"><legend class="lbl" data-i18n="f.'+f.id+'"></legend><div class="choices">';
+    for(var i=0;i<f.options.length;i++){h+='<label><input type="radio" name="'+f.id+'" value="'+esc(optVal(f.options[i]))+'"><span data-i18n="o.'+f.id+'.'+i+'"></span></label>';}
+    h+='</div></fieldset>';
+  }else if(f.type==="checkbox"){
+    h='<div class="field wide" data-cb="'+f.id+'"><div class="choices"><label><input type="checkbox" id="'+f.id+'" name="'+f.id+'" data-field="'+f.id+'"><span data-i18n="f.'+f.id+'"></span></label></div>'+(f.other?'<input type="text" class="other-text" id="'+f.other+'" name="'+f.other+'" data-field="'+f.other+'" aria-label="'+esc(f.en)+'">':'')+'</div>';
+  }else if(f.type==="checkgroup"){
+    h='<fieldset class="field wide" data-cbgroup="'+f.id+'" style="border:0;padding:0;margin:0"><legend class="lbl" data-i18n="f.'+f.id+'"></legend><div class="choices">';
+    var others="";
+    for(var j=0;j<f.items.length;j++){var it=f.items[j];h+='<label data-cb="'+it.id+'"><input type="checkbox" id="'+it.id+'" name="'+it.id+'" data-field="'+it.id+'"><span data-i18n="f.'+it.id+'"></span></label>';
+      if(it.other)others+='<input type="text" class="other-text" id="'+it.other+'" name="'+it.other+'" data-field="'+it.other+'" data-other-for="'+it.id+'" aria-label="'+esc(it.en)+'">';}
+    h+='</div>'+others+'</fieldset>';
+  }
+  return h;
+}
+function renderGroup(g){
+  var h='<div class="group'+(g.cls?" "+g.cls:"")+'">';
+  if(g.en)h+=(g.h4?'<h4':'<h3')+' data-i18n="g.'+g.key+'"></'+(g.h4?'h4':'h3')+'>';
+  if(g.sub)h+='<h4 data-i18n="g.'+g.key+'.sub"></h4>';
+  h+='<div class="fields">';for(var i=0;i<g.fields.length;i++)h+=renderField(g.fields[i]);
+  return h+'</div></div>';
+}
+function renderSections(){
+  var h="",nav="";
+  for(var s=0;s<SECTIONS.length;s++){var S=SECTIONS[s];
+    nav+='<a href="#sec-'+S.letter+'"><b>'+S.letter+'</b> <span data-i18n="s.'+S.letter+'"></span></a>';
+    h+='<section class="section-card" id="sec-'+S.letter+'"><div class="section-head"><span class="section-letter">'+S.letter+'</span><div><h2 data-i18n="s.'+S.letter+'"></h2><div class="by" data-i18n="ui.'+S.by+'"></div></div></div><div class="section-body">';
+    if(S.groups)for(var g=0;g<S.groups.length;g++)h+=renderGroup(S.groups[g]);
+    if(S.blocks)for(var b=0;b<S.blocks.length;b++){var B=S.blocks[b];
+      h+='<div class="block" data-block="'+B.toggle+'"><div class="block-head"><span class="code">'+B.code+'</span><span class="bt" data-i18n="b.'+B.toggle+'"></span><fieldset data-radio="'+B.toggle+'" style="border:0;padding:0;margin:0"><div class="choices"><label><input type="radio" name="'+B.toggle+'" value="Applicable"><span data-i18n="ui.applicable"></span></label><label><input type="radio" name="'+B.toggle+'" value="Not Applicable"><span data-i18n="ui.notApplicable"></span></label></div></fieldset></div><div class="block-body">';
+      for(var g2=0;g2<B.groups.length;g2++)h+=renderGroup(B.groups[g2]);
+      h+='</div></div>';}
+    h+='</div></section>';}
+  nav+='<a href="#reference"><b>i</b> <span data-i18n="ui.refTitle"></span></a>';
+  document.getElementById("sections").innerHTML=h;
+  document.getElementById("nav-links").innerHTML=nav;
+  var t='<thead><tr><th data-i18n="ui.thMarket"></th><th data-i18n="ui.thSeverity"></th><th data-i18n="ui.thWithin"></th><th data-i18n="ui.thReportable"></th><th data-i18n="ui.thComments"></th></tr></thead><tbody>';
+  for(var m=0;m<F3.length;m++){var M=F3[m];for(var r=0;r<M.rows.length;r++){t+='<tr>'+(r===0?'<td class="market" rowspan="'+M.rows.length+'" data-i18n="f3.m'+m+'"></td>':'')+'<td data-i18n="f3.r'+m+'_'+r+'"></td><td class="mono">'+M.rows[r][1]+'</td><td data-i18n="ui.no"></td>'+(r===0?'<td rowspan="'+M.rows.length+'" data-i18n="f3.c'+m+'"></td>':'')+'</tr>';}}
+  document.getElementById("f3-table").innerHTML=t+'</tbody>';
+}
+
+/* ---------------- i18n ---------------- */
+var LANG_KEY="pirf_lang",DATA_KEY="pirf_case_data";
+var lang="en";
+function translate(root,l){
+  var d=DICT[l],els=root.querySelectorAll("[data-i18n]"),i;
+  for(i=0;i<els.length;i++){var key=els[i].getAttribute("data-i18n");if(d[key]!=null)els[i].textContent=d[key];}
+  var ph=root.querySelectorAll("[data-i18n-placeholder]");
+  for(i=0;i<ph.length;i++){var pk=ph[i].getAttribute("data-i18n-placeholder");if(d[pk]!=null)ph[i].setAttribute("placeholder",d[pk]);}
+}
+function setLang(l){
+  lang=l;translate(document,l);
+  var html=document.documentElement;html.setAttribute("lang",l==="he"?"he":"en");html.setAttribute("dir",l==="he"?"rtl":"ltr");
+  var tb=document.getElementById("lang-toggle");tb.textContent=l==="he"?"English":"עברית";tb.setAttribute("aria-label",l==="he"?"Switch to English":"החלפה לעברית");
+  var inputs=document.querySelectorAll('#content input[type=text], #content textarea');
+  for(var i=0;i<inputs.length;i++){if(l==="he")inputs[i].setAttribute("dir","auto");else inputs[i].removeAttribute("dir");}
+  try{sessionStorage.setItem(LANG_KEY,l);}catch(e){}
+  renderStatus();
+}
+var T=function(k){return DICT[lang]["ui."+k];};
+
+/* ---------------- Data model ---------------- */
+function collect(){
+  var data={},i;
+  var fields=document.querySelectorAll("#content [data-field]");
+  for(i=0;i<fields.length;i++){var el=fields[i];data[el.getAttribute("data-field")]=el.type==="checkbox"?el.checked:el.value;}
+  var radios=document.querySelectorAll("#content [data-radio]");
+  for(i=0;i<radios.length;i++){var name=radios[i].getAttribute("data-radio");var c=document.querySelector('#content input[name="'+name+'"]:checked');data[name]=c?c.value:"";}
+  return data;
+}
+function apply(data){
+  if(!data)return;var i;
+  var fields=document.querySelectorAll("#content [data-field]");
+  for(i=0;i<fields.length;i++){var el=fields[i],k=el.getAttribute("data-field");if(!(k in data))continue;if(el.type==="checkbox")el.checked=!!data[k];else el.value=data[k]==null?"":data[k];}
+  var radios=document.querySelectorAll("#content [data-radio]");
+  for(i=0;i<radios.length;i++){var name=radios[i].getAttribute("data-radio"),v=data[name];var rs=document.querySelectorAll('#content input[name="'+name+'"]');for(var j=0;j<rs.length;j++)rs[j].checked=(v!=null&&v!==""&&rs[j].value===v);}
+}
+function clearAll(){
+  var fields=document.querySelectorAll("#content [data-field], #content input[type=radio]");
+  for(var i=0;i<fields.length;i++){var el=fields[i];if(el.type==="checkbox"||el.type==="radio")el.checked=false;else el.value="";}
+}
+var savedAt=null;
+function renderStatus(){var s=document.getElementById("status-save");s.textContent=savedAt?T("lastSaved")+" "+fmtLocal(savedAt):"";}
+function pad(n){return n<10?"0"+n:""+n;}
+function fmtLocal(iso){var d=new Date(iso);if(isNaN(d))return "";return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+" "+pad(d.getHours())+":"+pad(d.getMinutes());}
+function fmtDate(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());}
+
+/* ---------------- Banners ---------------- */
+function banner(kind,key){
+  var slot=document.getElementById("banner-slot");
+  slot.innerHTML='<div class="banner '+kind+'" role="status"><span data-i18n="ui.'+key+'">'+esc(T(key))+'</span><button type="button" class="close" aria-label="Close">×</button></div>';
+  slot.querySelector(".close").onclick=function(){slot.innerHTML="";};
+}
+
+/* ---------------- Save ---------------- */
+function save(){
+  var st=document.getElementById("status-save");st.textContent=T("saving");
+  var data=collect();data.__savedAt=new Date().toISOString();
+  var json=JSON.stringify(data);
+  document.getElementById("case-data").textContent=json;
+  var live=(window.lovable&&typeof window.lovable.saveDocument==="function")?window.lovable:null; // host "live document" API, if any
+  if(live){
+    try{
+      var p=live.saveDocument(json);
+      if(p&&typeof p.then==="function"){p.then(function(){savedAt=data.__savedAt;renderStatus();banner("success","bannerSaved");},function(err){
+        if(err&&/conflict/i.test(String(err.message||err))){try{sessionStorage.setItem(DATA_KEY+"_draft",json);}catch(e){}banner("warn","bannerConflict");renderStatus();}
+        else localSave(json,data);});return;}
+      savedAt=data.__savedAt;renderStatus();banner("success","bannerSaved");return;
+    }catch(e){}
+  }
+  localSave(json,data);
+}
+function localSave(json,data){
+  try{sessionStorage.setItem(DATA_KEY,json);savedAt=data.__savedAt;renderStatus();banner("warn","bannerLocal");}
+  catch(e){document.getElementById("status-save").textContent="";banner("warn","bannerPdfFail");}
+}
+function load(){
+  var raw=document.getElementById("case-data").textContent;
+  if(!raw||!raw.replace(/\s/g,"")){try{raw=sessionStorage.getItem(DATA_KEY);}catch(e){raw=null;}}
+  if(!raw)return;
+  try{var data=JSON.parse(raw);apply(data);savedAt=data.__savedAt||null;document.getElementById("case-data").textContent=raw;}catch(e){}
+}
+
+/* ---------------- Export (shared by Download + Print) ---------------- */
+function buildExport(){
+  var clone=document.getElementById("content").cloneNode(true);
+  var rm=clone.querySelectorAll("#instructions, #banner-slot, #lang-toggle, .savebar, .side-nav");
+  for(var i=0;i<rm.length;i++)rm[i].parentNode.removeChild(rm[i]);
+  var ref=clone.querySelector("#reference");if(ref)ref.setAttribute("open","");
+  // Force English + LTR on the export, regardless of the live display language
+  translate(clone,"en");
+  clone.setAttribute("dir","ltr");clone.setAttribute("lang","en");clone.className="export";
+  var E=DICT.en;
+  function valDiv(v,mono){var d=document.createElement("div");if(v){d.className="val"+(mono?" mono":"");d.textContent=v;}else{d.className="val empty";d.textContent=E["ui.notProvided"];}return d;}
+  // text / date / textarea → read-only divs
+  var inputs=clone.querySelectorAll("input[type=text], input[type=date], textarea"),j;
+  for(j=0;j<inputs.length;j++){var el=inputs[j],src=document.getElementById(el.id);var v=src?src.value:"";
+    var host=el.parentNode;var wrap=host.classList&&host.classList.contains("unit-wrap")?host:null;
+    var d=valDiv(v,el.type==="date");if(wrap){var u=wrap.querySelector(".unit");if(v&&u)d.textContent=v+" "+u.textContent;wrap.parentNode.replaceChild(d,wrap);}else host.replaceChild(d,el);
+    if(el.classList.contains("other-text")&&!v){d.parentNode.removeChild(d);}
+    if(el.id==="d3_signature"||el.id==="e_signature"||el.id==="f_signature"||el.id==="g_signature"){}
+  }
+  // radios: keep only checked option; empty group → "Not specified"
+  var rgroups=clone.querySelectorAll("[data-radio]");
+  for(j=0;j<rgroups.length;j++){var fs=rgroups[j],name=fs.getAttribute("data-radio");var checked=document.querySelector('#content input[name="'+name+'"]:checked');
+    var labels=fs.querySelectorAll("label");for(var k=0;k<labels.length;k++){var inp=labels[k].querySelector("input");if(!checked||inp.value!==checked.value)labels[k].parentNode.removeChild(labels[k]);else inp.parentNode.removeChild(inp);}
+    if(!checked){var ch=fs.querySelector(".choices");ch.parentNode.replaceChild(valDiv(""),ch);ch=fs.querySelector(".val");if(ch)ch.textContent=E["ui.notSpecified"];}}
+  // checkboxes: remove unchecked; empty group → "Not specified"
+  var cbs=clone.querySelectorAll("input[type=checkbox]");
+  for(j=0;j<cbs.length;j++){var cb=cbs[j],srcCb=document.getElementById(cb.id),lab=cb.parentNode;
+    if(srcCb&&srcCb.checked){lab.removeChild(cb);}else{var single=lab.parentNode.parentNode.getAttribute("data-cb");lab.parentNode.removeChild(lab);}}
+  var cgroups=clone.querySelectorAll("[data-cbgroup]");
+  for(j=0;j<cgroups.length;j++){var chs=cgroups[j].querySelector(".choices");if(chs&&!chs.querySelector("label")){var ns=valDiv("");ns.textContent=E["ui.notSpecified"];chs.parentNode.replaceChild(ns,chs);}}
+  var singles=clone.querySelectorAll("[data-cb].field");
+  for(j=0;j<singles.length;j++){var sc=singles[j].querySelector(".choices");if(sc&&!sc.querySelector("label"))singles[j].parentNode.removeChild(singles[j]);}
+  var legends=clone.querySelectorAll("legend");for(j=0;j<legends.length;j++){var l=document.createElement("div");l.className="lbl";l.textContent=legends[j].textContent;legends[j].parentNode.replaceChild(l,legends[j]);}
+  var fsets=clone.querySelectorAll("fieldset");for(j=0;j<fsets.length;j++){fsets[j].removeAttribute("style");}
+  return clone;
+}
+function slugify(s){return String(s||"").toLowerCase().replace(/[^a-z0-9\u0590-\u05ff]+/g,"-").replace(/^-+|-+$/g,"");}
+function fileName(){
+  var num=document.getElementById("aeIncNumber").value.trim()||document.getElementById("aeLtdNumber").value.trim()||"unnumbered";
+  var fac=slugify(document.getElementById("a1_facilityName").value)||"facility";
+  return "AE-"+slugify(num).toUpperCase()+"_"+fac+"_"+fmtDate(new Date())+".pdf";
+}
+function downloadPdf(){
+  var st=document.getElementById("status-pdf");
+  if(typeof html2pdf!=="function"){banner("warn","bannerPdfFail");return;}
+  st.textContent=T("downloading");
+  var node=buildExport();
+  var holder=document.createElement("div");holder.style.cssText="position:fixed;left:-10000px;top:0;width:794px;background:#fff;";holder.setAttribute("dir","ltr");holder.setAttribute("lang","en");holder.appendChild(node);document.body.appendChild(holder);
+  var name=fileName();
+  try{
+    html2pdf().set({margin:24/72,filename:name,image:{type:"jpeg",quality:.96},html2canvas:{scale:2,useCORS:true,backgroundColor:"#ffffff"},jsPDF:{unit:"in",format:"a4",orientation:"portrait"},pagebreak:{mode:["css","legacy"]}})
+      .from(node).save().then(function(){document.body.removeChild(holder);st.textContent=T("downloaded")+" "+name;},function(){document.body.removeChild(holder);st.textContent="";banner("warn","bannerPdfFail");});
+  }catch(e){if(holder.parentNode)document.body.removeChild(holder);st.textContent="";banner("warn","bannerPdfFail");}
+}
+function printPdf(){
+  var pa=document.getElementById("print-area");pa.innerHTML="";pa.setAttribute("dir","ltr");pa.setAttribute("lang","en");pa.appendChild(buildExport());
+  window.print();
+}
+window.addEventListener("afterprint",function(){document.getElementById("print-area").innerHTML="";});
+
+/* ---------------- New case ---------------- */
+function newCase(){if(window.confirm(T("confirmNew"))){clearAll();banner("info","bannerCleared");window.scrollTo(0,0);}}
+
+/* ---------------- Init ---------------- */
+renderSections();
+load();
+var saved="en";try{saved=sessionStorage.getItem(LANG_KEY)||"en";}catch(e){}
+setLang(saved==="he"?"he":"en");
+document.getElementById("lang-toggle").onclick=function(){setLang(lang==="he"?"en":"he");};
+document.getElementById("btn-save").onclick=save;
+document.getElementById("btn-pdf").onclick=downloadPdf;
+document.getElementById("btn-print").onclick=printPdf;
+document.getElementById("btn-new").onclick=newCase;
+})();
+</script>
+</body>
+</html>
